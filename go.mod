@@ -9,4 +9,6 @@ require (
 	github.com/tendermint/tendermint v0.33.1
 	github.com/tendermint/tm-db v0.4.0
 	golang.org/x/crypto v0.0.0-20191206172530-e9b2fee46413
+	golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135 // indirect
+	honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc // indirect
 )

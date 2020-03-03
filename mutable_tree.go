@@ -13,6 +13,8 @@ import (
 // ErrVersionDoesNotExist is returned if a requested version does not exist.
 var ErrVersionDoesNotExist = fmt.Errorf("version does not exist")
 
+var DB *nodeDB
+
 // MutableTree is a persistent tree which keeps track of versions.
 type MutableTree struct {
 	*ImmutableTree                  // The current, working tree.
@@ -55,6 +57,7 @@ func NewMutableTreeWithOpts(snapDB dbm.DB, recentDB dbm.DB, cacheSize int, opts 
 	ndb := newNodeDB(snapDB, recentDB, cacheSize, opts)
 	head := &ImmutableTree{ndb: ndb}
 
+	DB = ndb
 	return &MutableTree{
 		ImmutableTree: head,
 		lastSaved:     head.clone(),

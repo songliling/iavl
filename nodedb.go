@@ -66,6 +66,10 @@ func newNodeDB(snapshotDB dbm.DB, recentDB dbm.DB, cacheSize int, opts *Options)
 	return ndb
 }
 
+func (ndb *nodeDB) NodeCacheSize() int {
+	return ndb.nodeCacheQueue.Len()
+}
+
 func (ndb *nodeDB) isSnapshotVersion(version int64) bool {
 	return ndb.opts.KeepEvery != 0 && version%ndb.opts.KeepEvery == 0
 }
